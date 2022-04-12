@@ -44,7 +44,7 @@ const renderProducts = function(productData) {
 };
 
 const onPriceRangeButtonClick = function() {
-  alert('test 2 - on price range click');
+  alert('on price range click');
 
   // check if the fields have something in there
   // ! tags to be updated once that is completed
@@ -68,5 +68,5 @@ const onPriceRangeButtonClick = function() {
 };
 
 const onSearchButtonClick = function() {
-  alert('test 1 - still in development');
+  alert('still in development');
 };
