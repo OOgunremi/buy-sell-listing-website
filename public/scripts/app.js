@@ -1,19 +1,29 @@
-// Client facing scripts here
-
 $(() => {
   // search button clicked
   // ! tags to be updated once that is completed
-  $('nav .searchBar').on('click', onSearchButtonClick);
+  $('.searchBar').on('click', onSearchButtonClick);
 
   // price button updated
   // ! tags to be updated once that is completed
-  $('header .priceRange').on('click',onPriceRangeButtonClick);
+  $('.priceRange').on('click',onPriceRangeButtonClick);
+
+  renderProducts(temp_data);
 });
 
-
+// ! delete this later
+const temp_data = [{
+  id:0,
+  seller_id:0,
+  category:'bike',
+  name:'surly bike',
+  description:'it is a bike',
+  price:149900,
+  image_url_one: "https://cdn.shopify.com/s/files/1/0773/9113/files/icons-28_400x.png?v=1636390832",
+  available:true,
+  sold:false,
+}];
 
 const createProductElement = function(itemObj) {
-  // ! need to get the product data that Lucas will make to indicate the products
   /*
     ? itemObj.id  // this is the product id
     ? itemObj.seller_id
@@ -28,45 +38,51 @@ const createProductElement = function(itemObj) {
     ? itemObj.sold
   */
 
-  // const $header = $(`<header><img src=${escape(tweetObject.user.avatars)}><div class='userInfo'><label for="name">${escape(tweetObject.user.name)}</label><label for="handle" class="handleName">${escape(tweetObject.user.handle)}</label></div></header>`);
-  // const $paragraph = $(`<p>${escape(tweetObject.content.text)}</p>`);
-  // const $footer = $(`<footer><label class="tweetTime" for="datePosted">${timeago.format(tweetObject.created_at)}</label><div class="tweetIcons"><i class="fa-solid fa-flag"></i><i class="fa-solid fa-retweet"></i><i class="fa-solid fa-heart"></i></div></footer>`);
+  // ! need to get the product data that Lucas will make to indicate the products
+  const $header = $(`<header><img src=${itemObj.image_url_one}>`);
+  const $paragraph = $(`<p>id=${itemObj.id},seller_id=${itemObj.seller_id},description=${itemObj.description}, category = ${itemObj.category},  name = ${itemObj.name},  price = ${itemObj.price},available = ${itemObj.available},sold = ${itemObj.sold},</p>`);
 
-  // return $('<article class="tweet"></article>').append($header,$paragraph,$footer);
+  return $('<article class="product"></article>').append($header,$paragraph);
 };
 
 const renderProducts = function(productData) {
   for (const item of productData) {
     // newest products show at the top
     // ! tags to be updated once that is completed
-    $('.product-container').prepend(createProductElement(item));
+    $('body').prepend(createProductElement(item));
   }
 };
 
 const onPriceRangeButtonClick = function() {
-  alert('on price range click');
+  alert('on price range click');  // ! temp
 
   // check if the fields have something in there
   // ! tags to be updated once that is completed
   const $priceMin = $('.priceMin').val();
   const $priceMax = $('.priceMax').val();
   if (!$priceMin && !$priceMax) {
-    alert('enter at least one of the price range fields');
+    alert('enter at least one of the price range fields');  // ! temp
     return;
   }
 
-  // get the latest data from the server
+  // get the properties within the range from the server
   // ! routed to be updated later on
-  $.get('/product').then(function(data)  {
-    // ? passing the argument data to the server
-    // !    look at the lightbnb for this kind of functionality
+  // todo clean this up later
+  let url = '/product';
+  url += ($priceMin ? `?priceMin=${$priceMin}` : '');
+  if (url.includes('?')) {
+    url += ($priceMax ? `&priceMax=${$priceMax}` : '');
+  } else {
+    url += ($priceMax ? `?priceMax=${$priceMax}` : '');
+  }
 
+  $.get(url).then(function(json)  {
     // ! tags to be updated once that is completed
-    $('.product-container').empty();  // clear the product container
-    renderProducts(data); // populate the product container with the products
-  });
+    $('.product-container').empty();
+    renderProducts(json);
+  }).catch(error => console.log(error));
 };
 
 const onSearchButtonClick = function() {
-  alert('still in development');
+  alert('still in development!');  // ! temp
 };
