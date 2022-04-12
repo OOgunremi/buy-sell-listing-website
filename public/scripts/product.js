@@ -11,11 +11,11 @@ $(() => {
 
   // send button pressed
   // ! tags to be updated once that is completed
-  $('.contact_seller .send').on('click', onContactSellerButtonClick);
+  $('.contact-seller .send').on('click', onContactSellerButtonClick);
 
   // favorite button pressed
   // ! tags to be updated once that is completed
-  $('.product details .favorite').on('click',onFavoriteButtonClick);
+  $('.product-details .favorite').on('click',onFavoriteButtonClick);
 
 });
 
