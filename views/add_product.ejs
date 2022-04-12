@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,43 +10,31 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-  <!--css stylesheets-->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <title>Document</title>
 </head>
 
 <body>
   <%- include ('partials/nav') %>
-    <div class="filter">
-      <p>Price range</p>
-      <textarea placeholder="min"></textarea>
-      <p>to</p>
-      <textarea placeholder="max"></textarea>
-      <button>Filter</button>
-    </div>
-    <header id="banner">
+    <h1>Add a New Product</h1>
+    <div class="add-product"><!--these forms will be a column-->
       <div>
-        <img src="/images/bicycle.png">
+        <p>Product name</p>
+        <textarea></textarea>
       </div>
-    </header>
-    <img src="banner-placeholder">
-    <div class="product-container">
-      <div class="product-feature">
-        <img src="images/bike-photo1.png">
-        <div class="product-header-description">
-          <header class="product-header">
-            <h3>Product name</h3>
-            <p>$100</p>
-          </header>
-          <p>Product description</p>
-        </div>
+      <div>
+        <p>Description</p>
+        <textarea></textarea>
+      </div>
+      <div>
+        <p>Price</p>
+        <textarea></textarea>
+      </div>
+      <div>
+        <p>image url</p>
+        <textarea></textarea>
       </div>
     </div>
+    <button class="post-button">Post</button>
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -60,4 +46,5 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
 </body>
+
 </html>
