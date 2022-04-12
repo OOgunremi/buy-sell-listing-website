@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include ('partials/nav') %>
+    <h1>Add a New Product</h1>
+    <div class="add-product"><!--these forms will be a column-->
+      <div>
+        <p>Product name</p>
+        <textarea></textarea>
+      </div>
+      <div>
+        <p>Description</p>
+        <textarea></textarea>
+      </div>
+      <div>
+        <p>Price</p>
+        <textarea></textarea>
+      </div>
+      <div>
+        <p>image url</p>
+        <textarea></textarea>
+      </div>
+    </div>
+    <button class="post-button">Post</button>
+</body>
+
+</html>

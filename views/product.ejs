@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include ('partials/nav') %>
+    <div class="product-page">
+      <div class="product-info">
+        <div class="product-name-favorite-button">
+          <h1>Product name</h1>
+          <button>Add to Favorites</button>
+        </div>
+        <img src="image-placeholder">
+        <p>Product descriptions</p>
+        <ul>
+          <li>feature 1</li>
+          <li>feature 2</li>
+          <li>feature 3</li>
+        </ul>
+      </div>
+      <div class="contact-seller">
+        <h3>Contact seller name</h3>
+        <textarea placeholder="Please type your message to the seller"></textarea>
+        <button>Send</button>
+      </div>
+    </div>
+</body>
+
+</html>

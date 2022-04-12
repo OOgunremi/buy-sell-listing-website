@@ -1,0 +1,40 @@
+<header>
+  <nav class="nav">
+    <i class="logo"></i>
+    <a class="navbar-brand" href="/">Wheelies</a>
+
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div>
+      <textarea name="search-box" class="search-box" placeholder="Find a bike"></textarea>
+      <button type="submit" class="search-button">Search</button><!--or a clickable icon of a magnifying glass-->
+    </div>
+
+    </div>
+    <!--if user is logged in show "logged in as username" and the collapsable button-->
+    <% if (user) {%>
+      <form class="form-inline" method="POST" action="/logout">
+        <label for="username" style="margin: 0.4em">Logged in as <%= user.email %></label>
+        <!--collapsable button-->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Messages</a>
+            <a class="dropdown-item" href="#">Favorites</a>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
+        </div>
+      </form>
+      <!--else if user isn't logged in show a login button and register button (non-functioning?)-->
+      <% } else { %>
+        <form class="form-inline" class="align-middle" style="margin: 1em">
+          <button type="submit" class="btn btn-light">Login</button>
+        </form>
+        <form class="form-inline" class="align-middle">
+          <button type="submit" class="btn btn-light">Register</button>
+        </form>
+        <% } %>
+  </nav>
+</header>

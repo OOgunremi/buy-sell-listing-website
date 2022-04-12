@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Document</title>
+</head>
+<body>
+  <%- include ('partials/nav') %>
+  <button>Add Product</button><!--add a route to the add products page-->
+  <h1>My Products</h1>
+  <div>
+    <!--My products (need way to add multiple of this)-->
+    <div class="product-feature"><!--can I use the same class and css as the one in homepage?-->
+      <img src="image-placeholder">
+      <div class="product-header-description"><!--this div will be a column-->
+        <header class="product-header">
+          <h3>Product name</h3>
+          <p>$100</p>
+        </header>
+        <div>
+          <p>Product description</p>
+        </div>
+      </div>
+      <div class="edit-product"><!--these buttons will be a column)-->
+        <button>Mark as Sold</button>
+        <button>Remove</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
