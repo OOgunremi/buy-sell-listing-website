@@ -1,0 +1,5 @@
+// admin page jquery functions
+
+$(() => {
+
+});
