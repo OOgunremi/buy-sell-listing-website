@@ -8,7 +8,7 @@
 
   <!--bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <!-- Meta Information -->
   <title>Messages</title>
@@ -28,38 +28,48 @@
 <body>
   <!-- Top nav bar (fixed) -->
   <%- include ('partials/nav') %>
-  <h1>Message</h1>
+    <h1>Message</h1>
 
-  <!--header profile pic-->
-  <div id="header-main">
+    <!--header profile pic-->
+    <div id="header-main">
 
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <!--list of messages-->
-      <section class="message-container">
-        <!--message-->
-        <article class="message">
-          <header>
-            <div class="message-user">
-              <label>Username</label>
-            </div>
-          </header>
-          <p>
-            Message
-          </p>
-        </article>
-      </section>
-      <section>
-        <!--textbox area-->
-        <form class="textsubmit" action="/messages/:id" method="POST">
-          <textarea name="message-box" class="message-box" placeholder="Send a message"></textarea>
-          <button type="submit" class="send-message">Tweet</button>
-        </form>
-      </section>
-    </main>
-  </div>
-  <!-- App JS -->
-  <!-- <script type="text/javascript" src="/scripts/client.js"></script> -->
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <!--list of messages-->
+        <section class="message-container">
+          <!--message-->
+          <article class="message">
+            <header>
+              <div class="message-user">
+                <label>Username</label>
+              </div>
+            </header>
+            <p>
+              Message
+            </p>
+          </article>
+        </section>
+        <section>
+          <!--textbox area-->
+          <form class="textsubmit" action="/messages/:id" method="POST">
+            <textarea name="message-box" class="message-box" placeholder="Send a message"></textarea>
+            <button type="submit" class="send-message">Tweet</button>
+          </form>
+        </section>
+      </main>
+    </div>
+    <!-- App JS -->
+    <!-- <script type="text/javascript" src="/scripts/client.js"></script> -->
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>
