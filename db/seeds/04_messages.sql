@@ -1,7 +1,27 @@
-CREATE TABLE messages (
-  id SERIAL PRIMARY KEY NOT NULL,
-  product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
-  buyer_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  seller_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  messages TEXT NOT NULL
+INSERT INTO messages (
+  product_id,
+  buyer_id,
+  seller_id,
+  messages
+)
+VALUES (
+  01,
+  01,
+  02,
+  'Hello,
+  Wanted to know the price'
+);
+
+INSERT INTO messages (
+  product_id,
+  buyer_id,
+  seller_id,
+  messages
+)
+VALUES (
+  02,
+  02,
+  01,
+  'Hello,
+  Nice looking mug u got'
 );
