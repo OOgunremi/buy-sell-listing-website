@@ -23,47 +23,51 @@
 
 
 
-
+  <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <%- include('partials/_nav') %>
-    <main class="homepage">
+  <main class="homepage">
+    <%- include('partials/_nav') %>
+      <!--filter-->
       <div class="filter">
         <p>Price range</p>
-        <textarea placeholder="min" class="filterbox"></textarea>
+        <textarea placeholder="min" class="filterbox minbox"></textarea>
         <p>to</p>
-        <textarea placeholder="max" class="filterbox"></textarea>
-        <button type="button" class="btn btn-primary" class="filter-button">Filter</button>
+        <textarea placeholder="max" class="filterbox maxbox"></textarea>
+        <button type="button" class="btn btn-primary filter-button">Filter</button>
       </div>
+      <!--banner-->
       <header id="banner">
       </header>
-      <img src="banner-placeholder">
+      <!--product container-->
       <div class="product-container">
+        <!--product-feature-->
         <div class="product-feature">
-          <img src="images/bike-photo1.png">
+          <img src="images/bike-photo1.png" class="product-feature-photo">
           <div class="product-header-description">
             <header class="product-header">
               <h3>Product name</h3>
-              <p>$100</p>
+              <h3>$100</h3>
             </header>
-            <p>Product description</p>
+            <p class="product-description">Product description</p>
           </div>
         </div>
+
       </div>
-    </main>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
+  </main>
+  <!-- Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,4 +1,30 @@
 .product-container {
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin:1em;
 }
+
+.product-feature {
+  background-color: beige;
+  display:flex;
+  flex-direction: row;
+  width:100%
+}
+
+.product-feature-photo {
+  width:30%;
+}
+
+.product-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.product-header-description {
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  padding:1em;
+}
+

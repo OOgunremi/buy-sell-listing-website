@@ -2,5 +2,32 @@
   background-color: beige;
   display:flex;
   justify-content: space-between;
+  align-items: center;
 }
 
+.logo {
+  width: 50px;
+  margin:1em;
+}
+
+.logo-company.name {
+  display:flex;
+  flex-direction:row;
+  margin:1em;
+  width:33%
+}
+
+.search {
+  display:flex;
+  flex-direction: row;
+}
+
+.search-button {
+  margin-left: 1%
+}
+
+.search-box {
+  width:35em;
+  padding-left: 2%;
+  padding-right:2%;
+}
