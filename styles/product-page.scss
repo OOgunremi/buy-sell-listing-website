@@ -1,0 +1,31 @@
+.product-page {
+  display:flex;
+  flex-direction: row;
+}
+
+.product-info {
+  display:flex;
+  flex-direction: column;
+  width:70%;
+  margin:0.5em;
+}
+
+.product-name-favorite-button {
+  display:flex;
+  flex-direction:row;
+}
+
+.product-page-photo {
+  width:100%
+}
+
+.product-description {
+  width: 100%;
+}
+
+.contact-seller {
+  display: flex;
+  flex-direction: column;
+  width:30%
+  margin:0.5em;
+}

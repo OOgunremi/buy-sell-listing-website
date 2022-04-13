@@ -1,0 +1,33 @@
+.message-page-container {
+  display:flex;
+  flex-direction: column;
+  width:100%;
+}
+
+.messages-container {
+  display:flex;
+  flex-direction:column;
+}
+
+.message-header {
+  padding: 0.3em;
+  margin:0.5em;
+}
+
+.message-box {
+  display:flex;
+  flex-direction: column;
+  background-color: beige;
+  margin: 1em;
+  border-style: solid;
+  border-width: 3px;
+}
+
+.message-box:hover {
+  box-shadow: 10px 10px rgb(126, 171, 189);
+}
+
+.textsubmit {
+  display:flex;
+  flex-direction: row;
+}

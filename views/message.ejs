@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/banner.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/product-feature.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/messaging-app.css" type="text/css" />
 
 
 
@@ -28,51 +28,51 @@
   <!-- Meta Information -->
   <title>Messages</title>
 
-  <!-- External CSS -->
-
-
-  <!-- App CSS -->
-
-
-  <!-- External JS -->
-
-  <!-- App JS -->
   <!-- <script type="text/javascript" src="/scripts/client.js"></script> -->
 </head>
 
 <body>
   <!-- Top nav bar (fixed) -->
-  <%- include ('partials/nav') %>
-    <h1>Message</h1>
-
-    <!--header profile pic-->
-    <div id="header-main">
-
-      <!-- Page-specific (main) content here -->
-      <main class="container">
-        <!--list of messages-->
-        <section class="message-container">
-          <!--message-->
-          <article class="message">
-            <header>
-              <div class="message-user">
-                <label>Username</label>
-              </div>
-            </header>
-            <p>
-              Message
-            </p>
-          </article>
-        </section>
-        <section>
-          <!--textbox area-->
-          <form class="textsubmit" action="/messages/:id" method="POST">
-            <textarea name="message-box" class="message-box" placeholder="Send a message"></textarea>
-            <button type="submit" class="send-message">Tweet</button>
-          </form>
-        </section>
-      </main>
-    </div>
+  <%- include ('partials/_nav') %>
+    <!-- contains both  -->
+    <main class="message-page-container">
+      <!--column-->
+      <h1>Message</h1>
+      <!--list of messages-->
+      <section class="messages-container">
+        <!--buyer message-->
+        <article class="message-box">
+          <header class="message-header">
+            <div class="message-user">
+              <h3>Username</h3>
+            </div>
+          </header>
+          <p class="message">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum finibus convallis. Curabitur
+            ac mi quis turpis commodo egestas. Nam egestas finibus ipsum eget commodo. Donec egestas arcu vel neque
+            finibus venenatis. Praesent condimentum sem non tortor hendrerit, id rhoncus erat varius.
+          </p>
+        </article>
+        <!--seller message-->
+        <article class="message-box">
+          <header class="message-header">
+            <label class="message-username">Username</label>
+          </header>
+          <p class="message">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum finibus convallis. Curabitur
+            ac mi quis turpis commodo egestas. Nam egestas finibus ipsum eget commodo. Donec egestas arcu vel neque
+            finibus venenatis. Praesent condimentum sem non tortor hendrerit, id rhoncus erat varius.
+          </p>
+        </article>
+      </section>
+      <section>
+        <!--textbox area-->
+        <form class="textsubmit" action="/messages/:id" method="POST"><!--row-->
+          <textarea name="message-box" class="message-box" placeholder="Send a message"></textarea>
+          <button type="button" class="btn btn-primary">Send</button>
+        </form>
+      </section>
+    </main>
     <!-- App JS -->
     <!-- <script type="text/javascript" src="/scripts/client.js"></script> -->
     <!-- Bootstrap JS -->
