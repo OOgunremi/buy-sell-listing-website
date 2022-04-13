@@ -1,6 +1,7 @@
 .product-page {
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-info {
@@ -13,6 +14,12 @@
 .product-name-favorite-button {
   display:flex;
   flex-direction:row;
+  justify-content: space-between;
+}
+
+.fav-button {
+  margin-top:1em;
+  margin-bottom:1em;
 }
 
 .product-page-photo {
@@ -21,11 +28,16 @@
 
 .product-description {
   width: 100%;
+  margin-top:1em;
 }
 
 .contact-seller {
   display: flex;
   flex-direction: column;
-  width:30%
-  margin:0.5em;
+  margin:1em;
+  width:70%;
+}
+
+.send-box {
+  width:100%
 }
