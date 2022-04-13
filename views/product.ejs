@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/styles/banner.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/product-feature.css" type="text/css" />
-
+  <link rel="stylesheet" href="/styles/product-page.css" type="text/css" />
 
 
   <!--JS-->
@@ -29,25 +29,27 @@
 </head>
 
 <body>
-  <%- include ('partials/_nav') %>
-    <div class="product-page">
-      <div class="product-info">
-        <div class="product-name-favorite-button">
+  <%- include('partials/_nav') %>
+  <!--container for both product-info and contact-seller -->
+    <div class="product-page"><!--row-->
+      <!--product info-->
+      <div class="product-info"><!--column-->
+        <div class="product-name-favorite-button"><!--row-->
           <h1>Product name</h1>
-          <button>Add to Favorites</button>
+          <button type="button" class="btn btn-success fav-button" action="/favorites/:id" method="POST">Favorite</button>
         </div>
-        <img src="image-placeholder">
-        <p>Product descriptions</p>
-        <ul>
-          <li>feature 1</li>
-          <li>feature 2</li>
-          <li>feature 3</li>
-        </ul>
+        <img src="/images/bike-photo1.png" class="product-page-photo">
+        <div class="product-description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu tincidunt enim, nec congue turpis. Etiam eu volutpat massa. Vivamus accumsan urna tellus.</p>
+        </div>
       </div>
+      <!--contact seller-->
       <div class="contact-seller">
         <h3>Contact seller name</h3>
-        <textarea placeholder="Please type your message to the seller"></textarea>
-        <button>Send</button>
+        <form class="contact-seller-form" action="/messages/:id" method="POST">
+          <textarea placeholder="Please type your message to the seller" class="send-box"></textarea>
+          <button type="button" class="btn btn-primary send-button">Send</button>
+        </form>
       </div>
     </div>
     <!-- Bootstrap JS -->
