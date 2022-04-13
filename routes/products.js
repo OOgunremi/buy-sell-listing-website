@@ -4,18 +4,41 @@ const router  = express.Router();
 module.exports = (db) => {
   //Browse
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM products`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
-        const products = data.rows;
+    let queryString = `SELECT * FROM products WHERE sold = false AND available = true`;
+
+    let minPrice = req.query.minPrice;
+    let maxPrice = req.query.maxPrice;
+    const queryParams = [];
+
+
+    if (minPrice) {
+      queryParams.push(`${minPrice}`);
+      queryString += ` AND products.price >= $${queryParams.length} `;
+    }
+    if (maxPrice) {
+      queryParams.push(`${maxPrice}`);
+      queryString += ` AND price <= $${queryParams.length} `;
+    }
+    queryParams.push(20);
+    queryString += `
+  ORDER BY price
+  LIMIT $${queryParams.length};
+  `;
+    console.log(queryString, queryParams);
+
+    db
+      .query(queryString, queryParams)
+      .then((result) => {
+        let products = result.rows;
         res.json({ products });
+
       })
-      .catch(err => {
+      .catch((err) => {
         res
           .status(500)
           .json({ error: err.message });
       });
+
   });
 
   //Read
@@ -39,13 +62,10 @@ module.exports = (db) => {
   //Edit
   router.post("/:id", (req, res) => {
 
-
-
-
   });
 
 
-  //A
+  //Add
 
   router.post("/", (req, res) => {
     const name = req.body.name;
@@ -55,18 +75,17 @@ module.exports = (db) => {
     const description = req.body.description;
     const category = req.body.category;
     const imageUrlOne = req.body.image_url_one;
-    const available = req.body.available;
-    const postCode = req.body.post_code;
-    const sold = req.body.sold;
+    let available = req.body.available;
+    let sold = req.body.sold;
+    available = true;
+    sold =  false;
 
-    const values = [`${name}`, `${price}`, `${sellerId}`, `${email}`, `${description}`, `${category}`, `${imageUrlOne}`, `${available}`, `${postCode}`, `${sold}`];
+    const values = [`${name}`, `${price}`, `${sellerId}`, `${email}`, `${description}`, `${category}`, `${imageUrlOne}`, `${available}`, `${sold}`];
     const queryString = `INSERT INTO products (name, price, seller_id, description, category, image_url_one, available, sold)
   VALUES($1, $2, $3, $4, $5, $6, $7, $8)  RETURNING *;`;
     db
       .query(queryString, values)
       .then((result) => {
-
-
 
         console.log(result.rows[0]);
         return result;
@@ -78,15 +97,26 @@ module.exports = (db) => {
   });
 
 
-  //D
+  //Delete
   router.post("/:id/delete", (req, res) => {
     const id = req.params.id;
 
+    const values = [`${id}`];
+    const queryString = `
+    UPDATE products
+    SET available  = false
+    WHERE products.id = $1  RETURNING *;`;
+    db
+      .query(queryString, values)
+      .then((result) => {
+        res.redirect('/');
+        console.log(result.rows[0]);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
 
   });
-
-
-
   return router;
 };
 
