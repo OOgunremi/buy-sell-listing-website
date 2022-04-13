@@ -3,6 +3,10 @@
   display:flex;
   justify-content: space-between;
   align-items: center;
+  position:sticky;
+  top:0;
+  flex-wrap:nowrap;
+  z-index:100;
 }
 
 .logo {
@@ -10,16 +14,19 @@
   margin:1em;
 }
 
-.logo-company.name {
+.logo-company-name {
   display:flex;
   flex-direction:row;
-  margin:1em;
-  width:33%
+  align-items:center;
+  // margin:1em;
+  // width:33%
 }
 
 .search {
   display:flex;
   flex-direction: row;
+  width:60%;
+  padding:0 20px;
 }
 
 .search-button {
@@ -27,7 +34,15 @@
 }
 
 .search-box {
-  width:35em;
+  width:100%;
   padding-left: 2%;
   padding-right:2%;
+}
+
+.user-menu {
+  // display:flex;
+  margin-right:1em;
+  // flex-wrap:nowrap;
+  // min-height:3em;
+  white-space: nowrap;
 }
