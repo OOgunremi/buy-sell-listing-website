@@ -6,8 +6,8 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     let queryString = `SELECT * FROM products WHERE sold = false AND available = true`;
 
-    let minPrice = req.query.minPrice;
-    let maxPrice = req.query.maxPrice;
+    let minPrice = req.query.priceMin;
+    let maxPrice = req.query.priceMax;
     const queryParams = [];
 
 
