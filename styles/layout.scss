@@ -8,10 +8,5 @@ html {
 .homepage {
   display: flex;
   flex-direction: column;
-}
-
-.filter {
-  display: flex;
-  flex-direction: row;
-  margin: 1em;
+  width: 100%;
 }
