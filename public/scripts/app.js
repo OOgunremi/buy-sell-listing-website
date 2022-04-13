@@ -1,13 +1,11 @@
 $(() => {
   // search button clicked
-  // ! tags to be updated once that is completed
-  $('.searchBar').on('click', onSearchButtonClick);
+  $('.search-button').on('click', onSearchButtonClick);
 
   // price button updated
-  // ! tags to be updated once that is completed
-  $('.priceRange').on('click',onPriceRangeButtonClick);
+  $('.filter-button').on('click',onPriceRangeButtonClick);
 
-  renderProducts(temp_data);
+  renderProducts(temp_data);  // ! temp
 });
 
 // ! delete this later
@@ -45,11 +43,9 @@ const createProductElement = function(itemObj) {
   return $('<article class="product"></article>').append($header,$paragraph);
 };
 
-const renderProducts = function(productData) {
+const renderProducts = function(producztData) {
   for (const item of productData) {
-    // newest products show at the top
-    // ! tags to be updated once that is completed
-    $('body').prepend(createProductElement(item));
+    $('.product-container').prepend(createProductElement(item));
   }
 };
 
@@ -57,18 +53,16 @@ const onPriceRangeButtonClick = function() {
   alert('on price range click');  // ! temp
 
   // check if the fields have something in there
-  // ! tags to be updated once that is completed
-  const $priceMin = $('.priceMin').val();
-  const $priceMax = $('.priceMax').val();
-  if (!$priceMin && !$priceMax) {
-    alert('enter at least one of the price range fields');  // ! temp
-    return;
-  }
+  const $priceMin = $('.filter .minbox').val();
+  const $priceMax = $('.filter .maxbox').val();
+  // if (!$priceMin && !$priceMax) {
+  //   alert('enter at least one of the price range fields');
+  //   return;
+  // }
 
   // get the properties within the range from the server
-  // ! routed to be updated later on
-  // todo clean this up later
-  let url = '/product';
+  // ! route to be updated later on
+  let url = '/products';
   url += ($priceMin ? `?priceMin=${$priceMin}` : '');
   if (url.includes('?')) {
     url += ($priceMax ? `&priceMax=${$priceMax}` : '');
@@ -76,8 +70,10 @@ const onPriceRangeButtonClick = function() {
     url += ($priceMax ? `?priceMax=${$priceMax}` : '');
   }
 
+  console.log("🚀 ~ file: app.js ~ line 75 ~ $.get ~ url", url);
   $.get(url).then(function(json)  {
-    // ! tags to be updated once that is completed
+    console.log("🚀 ~ file: app.js ~ line 74 ~ $.get ~ json", json);
+
     $('.product-container').empty();
     renderProducts(json);
   }).catch(error => console.log(error));
@@ -85,4 +81,5 @@ const onPriceRangeButtonClick = function() {
 
 const onSearchButtonClick = function() {
   alert('still in development!');  // ! temp
+  console.log('search button clicked');
 };
