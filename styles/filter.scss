@@ -1,0 +1,19 @@
+.filter {
+  display:flex;
+  // flex-direction: row;
+  align-items: center;
+  // position:sticky;
+  // top:100px;
+  background-color: white;
+  // height:100px;
+  // width:100%;
+}
+
+.filter>p {
+  margin-bottom:0;
+}
+
+.filterbox {
+margin-right:1em;
+margin-left:1em;
+}
