@@ -13,9 +13,9 @@
     <!--css stylesheets-->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/banner.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
+  <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  <!-- <link rel="stylesheet" href="/styles/banner.css" type="text/css" /> -->
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/product-feature.css" type="text/css" />
 
@@ -33,12 +33,18 @@
     <div class="message-container">
     <div class="message-history">
       <label>Seller name</label>
-    </div>
-  </div>
-    <!-- Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script> -->
+    </div> </div>
+    <section class="class-new-tweet">
+      <form id="message-form" action="/messages/" method="POST">
+        <textarea name="text" id="message-text" placeholder="Type your messages here"></textarea>
+        <div class='tweeting-box-footer'>
+          <button class="tweet-button" type="submit">Message</button>
+        </div>
+      </form>
+    </section>
+    <section class="messages">
+    </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
       crossorigin="anonymous"></script>
