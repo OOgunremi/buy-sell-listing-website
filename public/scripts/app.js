@@ -41,7 +41,7 @@ const renderProducts = function(productData) {
 };
 
 const onPriceRangeButtonClick = function(e) {
-  alert('on price range click');  // ! temp
+  // alert('on price range click');  // ! temp
   e.preventDefault();
 
   // check if the fields have something in there
@@ -65,6 +65,6 @@ const onPriceRangeButtonClick = function(e) {
 };
 
 const onSearchButtonClick = function() {
-  alert('still in development!');  // ! temp
+  // alert('still in development!');  // ! temp
   console.log('search button clicked');
 };
