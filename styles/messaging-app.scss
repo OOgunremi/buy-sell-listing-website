@@ -4,6 +4,10 @@
   width:100%;
 }
 
+.message-title {
+  margin:0.5em;
+}
+
 .messages-container {
   display:flex;
   flex-direction:column;
@@ -21,13 +25,20 @@
   margin: 1em;
   border-style: solid;
   border-width: 3px;
+  width:90%;
 }
 
-.message-box:hover {
-  box-shadow: 10px 10px rgb(126, 171, 189);
+.message {
+  margin:1em;
 }
 
 .textsubmit {
   display:flex;
   flex-direction: row;
+}
+
+.message-button {
+  margin-right:1em;
+  margin-top:1em;
+  margin-bottom:1em;
 }

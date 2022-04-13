@@ -33,13 +33,13 @@
 
 <body>
   <!-- Top nav bar (fixed) -->
-  <%- include ('partials/_nav') %>
     <!-- contains both  -->
     <main class="message-page-container">
+      <%- include('partials/_nav') %>
       <!--column-->
-      <h1>Message</h1>
       <!--list of messages-->
       <section class="messages-container">
+        <h1 class="message-title">Message</h1>
         <!--buyer message-->
         <article class="message-box">
           <header class="message-header">
@@ -56,7 +56,9 @@
         <!--seller message-->
         <article class="message-box">
           <header class="message-header">
-            <label class="message-username">Username</label>
+            <div class="message-user">
+              <h3>Username</h3>
+            </div>
           </header>
           <p class="message">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum finibus convallis. Curabitur
@@ -69,7 +71,7 @@
         <!--textbox area-->
         <form class="textsubmit" action="/messages/:id" method="POST"><!--row-->
           <textarea name="message-box" class="message-box" placeholder="Send a message"></textarea>
-          <button type="button" class="btn btn-primary">Send</button>
+          <button type="button" class="btn btn-primary message-button">Send</button>
         </form>
       </section>
     </main>

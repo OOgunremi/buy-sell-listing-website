@@ -29,14 +29,14 @@
 </head>
 
 <body>
-  <%- include ('partials/_nav') %>
+  <%- include('partials/_nav') %>
   <!--container for both product-info and contact-seller -->
     <div class="product-page"><!--row-->
       <!--product info-->
       <div class="product-info"><!--column-->
         <div class="product-name-favorite-button">
           <h1>Product name</h1>
-          <button type="button" class="btn btn-success" action="/favorites/:id" method="POST">Favorite</button>
+          <button type="button" class="btn btn-success fav-button" action="/favorites/:id" method="POST">Favorite</button>
         </div>
         <img src="/images/bicycle.png" class="product-page-photo">
         <div class="product-description">
@@ -48,7 +48,7 @@
         <h3>Contact seller name</h3>
         <form class="contact-seller-form" action="/messages/:id" method="POST">
           <textarea placeholder="Please type your message to the seller"></textarea>
-          <button>Send</button>
+          <button type="button" class="btn btn-primary send-button">Send</button>
         </form>
       </div>
     </div>
