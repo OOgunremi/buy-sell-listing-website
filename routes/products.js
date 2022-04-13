@@ -4,7 +4,7 @@ const router  = express.Router();
 module.exports = (db) => {
   //Browse
   router.get("/", (req, res) => {
-    let queryString = `SELECT * FROM products WHERE true`;
+    let queryString = `SELECT * FROM products WHERE sold = false AND available = true`;
 
     let minPrice = req.query.minPrice;
     let maxPrice = req.query.maxPrice;
@@ -101,11 +101,22 @@ module.exports = (db) => {
   router.post("/:id/delete", (req, res) => {
     const id = req.params.id;
 
+    const values = [`${id}`];
+    const queryString = `
+    UPDATE products
+    SET available  = false
+    WHERE products.id = $1  RETURNING *;`;
+    db
+      .query(queryString, values)
+      .then((result) => {
+        res.redirect('/');
+        console.log(result.rows[0]);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
 
   });
-
-
-
   return router;
 };
 
