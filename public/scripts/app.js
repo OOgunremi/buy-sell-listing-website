@@ -5,7 +5,7 @@ $(() => {
   // price button updated
   $('.filter-button').on('click',onPriceRangeButtonClick);
 
-  renderProducts(temp_data);  // ! temp
+  // renderProducts(temp_data);  // ! temp
 });
 
 // ! delete this later
@@ -43,8 +43,9 @@ const createProductElement = function(itemObj) {
   return $('<article class="product"></article>').append($header,$paragraph);
 };
 
-const renderProducts = function(producztData) {
-  for (const item of productData) {
+const renderProducts = function(productData) {
+  console.log("🚀 ~ file: app.js ~ line 47 ~ renderProducts ~ productData", productData);
+  for (const item of productData.products) {
     $('.product-container').prepend(createProductElement(item));
   }
 };
