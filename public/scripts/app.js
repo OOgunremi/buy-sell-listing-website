@@ -11,17 +11,17 @@ $(() => {
 });
 
 // ! delete this later
-const temp_data = [{
-  id:0,
-  seller_id:0,
-  category:'bike',
-  name:'surly bike',
-  description:'it is a bike',
-  price:149900,
-  image_url_one: "https://cdn.shopify.com/s/files/1/0773/9113/files/icons-28_400x.png?v=1636390832",
-  available:true,
-  sold:false,
-}];
+// const temp_data = [{
+//   id:0,
+//   seller_id:0,
+//   category:'bike',
+//   name:'surly bike',
+//   description:'it is a bike',
+//   price:149900,
+//   image_url_one: "https://cdn.shopify.com/s/files/1/0773/9113/files/icons-28_400x.png?v=1636390832",
+//   available:true,
+//   sold:false,
+// }];
 
 const createProductElement = function(itemObj) {
   /*
