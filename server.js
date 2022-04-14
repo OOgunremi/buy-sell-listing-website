@@ -57,31 +57,35 @@ app.use("/favourites", favouritesRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/test", async (req, res) => {
+app.get("/test", async(req, res) => {
   res.render("add_product");
 });
 
-app.get("/", async (req, res) => {
+app.get("/", async(req, res) => {
   let priceMin = req.query.priceMin;
   let priceMax = req.query.priceMax;
   const products = await productsFunctions.getFilterProducts(db, priceMin, priceMax);
   res.render("index", {products});
 });
 
+app.get("/admin", async(req, res) => {
+  const products = await productsFunctions.getAdminProducts(db, req);
+  res.render("admin_products", {products});
+});
 
-app.get("/msg", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+app.get("/msg", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   res.render("message");
 });
 
-app.get("/fav", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+app.get("/fav", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   res.render("favorites");
 });
 
-app.get("/msghistory", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+app.get("/msghistory", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   res.render("message_history");
 });
 
-app.get("/new", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+app.get("/new", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   res.render("add_product");
 });
 app.listen(PORT, () => {
