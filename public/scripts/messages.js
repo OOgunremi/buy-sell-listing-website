@@ -16,16 +16,16 @@
 //   $('.conversationSend').on('click', onConversationSendClick);
 // });
 
-let renderMessages = function (messages) {
-  //resets the elements in the messages container
-  let messagesContainer = $('.messages').html('');
+// let renderMessages = function (messages) {
+//   //resets the elements in the messages container
 
-  //loops through all the array of messages and prepends HTML formated messages for chronological display
-  for (let message of messages) {
-    let messageHTML = createMessageElement(message);
-    messagesContainer.a(messageHTML);
-  }
-};
+
+//   //loops through all the array of messages and prepends HTML formated messages for chronological display
+//   for (let message of messages) {
+//     let messageHTML = createMessageElement(message);
+//     messagesContainer.append(messageHTML);
+//   }
+// };
 
 //protects against XSS Hacks
 const escapeHacks = function (str) {
@@ -35,20 +35,16 @@ const escapeHacks = function (str) {
 };
 
 const createMessageElement = function(message) {
-  let messageHTML = `<article class="message-article">
-  <header class="article-header">
-    <div class="profile-name-avatar">
-      <span>${messages.product_id}</span>
-    </div>
-    <div class="messages-header">
-    ${messages.buyer_id}
+  let messageHTML = `
+  <article class="message-box">
+  <header class="message-header">
+    <div class="message-user">
+      <h3>Me</h3>
     </div>
   </header>
-  <div class="tweets-middle">${escapeHacks(tweet.content.text)}</div>
-  <footer class="article-footer">
-    <div class="days-counter">${timeago.format(message.created_at)}</div>
-
-  </footer>
+  <p class="message">
+    ${message}
+  </p>
 </article>`;
   return messageHTML;
 
@@ -56,27 +52,37 @@ const createMessageElement = function(message) {
 
 //waits for the page to fully load before calling the callback
 $(document).ready(function() {
+  console.log('document ready = ');
 
   //This is the submit handler
-  $("#message-form").submit(function(event) {
+  $(".textsubmit").submit(function(event) {
     //prevents route redirection upon submission
     event.preventDefault();
 
     //grabs tweet values excluding spaces at begining and the end
-    let tweetValue = $("#message-text").val().trim();
+    let messageValue = $("#message-text-area").val().trim();
+    console.log('tweetValue = ', messageValue);
     //checks if no character was typed or if excess was typed, returns error messages accordingly
-    if (!tweetValue) {
+    if (messageValue) {
 
       // POST request
       const url = '/messages/';
       const data = $(this).serialize();
+      console.log('data = ', data);
+      let messagesContainer = $('.messages');
+      let temp = createMessageElement(messageValue);
+      console.log('temp = ', temp);
+      messagesContainer.append(temp);
+      console.log('messagesContainer = ', messagesContainer);
       $.ajax({
         url: "/messages",
         type: "post",
         data: data
+
+
       }).then((data) => {
         //loads tweet GET request automatically without browser refresh
-        loadMessages();
+        // loadMessages();
       });
     }
   });
@@ -85,7 +91,7 @@ $(document).ready(function() {
   const loadMessages = function() {
     $.get('/messages', function(data, status) {
       // console.log(data);
-      renderMessages(data);
+      //renderMessages(data);
     });
   };
   loadMessages();

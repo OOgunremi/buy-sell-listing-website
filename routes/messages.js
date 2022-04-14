@@ -10,13 +10,13 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM messages`;
+    let query = `SELECT users.id, messages, username FROM messages JOIN users
+    ON buyer_id = users.id `;
     console.log(query);
     db.query(query)
       .then(data => {
-        // console.log(data);
-        const messages = data.rows;
-        res.json({ messages });
+        console.log('data.rows = ', data.rows);
+        res.render('message',{messages: data.rows});
       })
       .catch(err => {
         res
@@ -44,12 +44,23 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
+
+    //console.log(req.body)
+    res.sendStatus(201);
+
     const messages = req.body.messages;
+
+    console.log('req.body = ', req.body);
 
 
     const values = [`${messages}`];
-    const queryString = `INSERT INTO products (name, price, seller_id, description, category, image_url_one, available, sold)
-  VALUES($1, $2, $3, $4, $5, $6, $7, $8)  RETURNING *;`;
+    const queryString = `INSERT INTO messages (
+      product_id,
+      buyer_id,
+      seller_id,
+      messages
+    )
+  VALUES($1, $2, $3, $4)  RETURNING *;`;
     db
       .query(queryString, values)
       .then((result) => {

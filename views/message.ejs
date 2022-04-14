@@ -23,7 +23,7 @@
 
   <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/messages.js"></script>
 
   <!-- Meta Information -->
   <title>Messages</title>
@@ -41,37 +41,25 @@
       <section class="messages-container">
         <h1 class="message-title">Message</h1>
         <!--buyer message-->
-        <article class="message-box">
-          <header class="message-header">
-            <div class="message-user">
-              <h3>Username</h3>
-            </div>
-          </header>
-          <p class="message">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum finibus convallis. Curabitur
-            ac mi quis turpis commodo egestas. Nam egestas finibus ipsum eget commodo. Donec egestas arcu vel neque
-            finibus venenatis. Praesent condimentum sem non tortor hendrerit, id rhoncus erat varius.
-          </p>
-        </article>
-        <!--seller message-->
-        <article class="message-box">
-          <header class="message-header">
-            <div class="message-user">
-              <h3>Username</h3>
-            </div>
-          </header>
-          <p class="message">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum finibus convallis. Curabitur
-            ac mi quis turpis commodo egestas. Nam egestas finibus ipsum eget commodo. Donec egestas arcu vel neque
-            finibus venenatis. Praesent condimentum sem non tortor hendrerit, id rhoncus erat varius.
-          </p>
-        </article>
+        <section class="messages">
+        <%for (message of messages) {%>
+          <article class="message-box">
+            <header class="message-header">
+              <div class="message-user">
+                <h3><%= message.username %></h3>
+              </div>
+            </header>
+            <p class="message">
+              <%= message.messages %>
+            </p>
+          </article>
+        <%}%>
       </section>
-      <section>
+
         <!--textbox area-->
         <form class="textsubmit" action="/messages/:id" method="POST"><!--row-->
-          <textarea name="message-box" class="message-box" placeholder="Send a message"></textarea>
-          <button type="button" class="btn btn-primary message-button">Send</button>
+          <textarea name="message-box" class="message-box" id="message-text-area" placeholder="Send a message"></textarea>
+          <button type="submit" class="btn btn-primary message-button">Send</button>
         </form>
       </section>
     </main>
