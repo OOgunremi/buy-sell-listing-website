@@ -60,81 +60,51 @@ app.use("/favourites", favouritesRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-<<<<<<< HEAD
 app.get("/test", async (req, res) => {
-  res.render("product");
-=======
-app.get("/test", async(req, res) => {
-  res.render("add_product");
->>>>>>> 95bd2a2cdc8a317570dda8f2db31915233edf7a9
-});
-
-app.get("/", async(req, res) => {
-  let priceMin = req.query.priceMin;
-  let priceMax = req.query.priceMax;
-  const products = await productsFunctions.getFilterProducts(db, priceMin, priceMax);
-  res.render("index", {products});
-});
-
-app.get("/admin", async(req, res) => {
-  const products = await productsFunctions.getAdminProducts(db, req);
-  res.render("admin_products", {products});
-});
-
-<<<<<<< HEAD
-app.get("/msg", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-  let query = `SELECT messages.id, users.username, messages  FROM messages JOIN users
-    ON messages.buyer_id = users.id`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
-        console.log('data.rows = ', data.rows);
-        res.render('message',{messages: data.rows});
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-});
-
-// WHERE user_id=$1 and product_id=$2
-// [req.query.user_id, req.query.product_id]
-app.get("/fav", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-  let query = `SELECT * FROM favourites WHERE user_id=$1`;
-    // console.log('server side', query);
-    // console.log('query values', req.query);
-    // console.log('cookies', res.cookie('user_id'));
-    db.query(query, [req.query.user_id])
-      .then(data => {
-        const favourites = data.rows;
-        console.log('favorites', req.cookies, 'user_id', req.query.user_id);
-        res.render("favorites", { favourites });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-=======
-app.get("/msg", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   res.render("message");
 });
 
-app.get("/fav", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-  res.render("favorites");
->>>>>>> 95bd2a2cdc8a317570dda8f2db31915233edf7a9
+app.get("/", async (req, res) => {
+  let priceMin = req.query.priceMin;
+  let priceMax = req.query.priceMax;
+  const products = await productsFunctions.getFilterProducts(db, priceMin, priceMax);
+  res.render("index", { products });
 });
 
-app.get("/msghistory", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+app.get("/admin", async (req, res) => {
+  const products = await productsFunctions.getAdminProducts(db, req);
+  res.render("admin_products", { products });
+});
+
+app.get("/msg", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+
+});
+
+
+//for favorite of favorites favorite.product_id
+app.get("/fav", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+  let query = `SELECT products.id, products.name, products.price, products.description, products.image_url_one FROM favourites JOIN products ON product_id = products.id WHERE user_id=$1`;
+  // console.log('server side', query);
+  // console.log('query values', req.query);
+  db.query(query, [productsFunctions.getAppCookies(req)['user_id']]) //productsFunctions.getAppCookies(req)['user_id'] of the user logged in
+    .then(data => {
+      const favourites = data.rows;
+      // console.log('data.rows', data)
+      res.render('favorites', { favourites });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  // res.render("favorites");
+});
+
+app.get("/msghistory", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   res.render("message_history");
 });
 
-<<<<<<< HEAD
 app.get("/new", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-=======
-app.get("/new", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
->>>>>>> 95bd2a2cdc8a317570dda8f2db31915233edf7a9
   res.render("add_product");
 });
 app.listen(PORT, () => {
