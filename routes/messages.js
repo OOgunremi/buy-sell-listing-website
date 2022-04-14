@@ -11,7 +11,8 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM messages`;
+    let query = `SELECT messages.id, users.username, messages  FROM messages JOIN users
+    ON messages.buyer_id = users.id`;
     console.log(query);
     db.query(query)
       .then(data => {
@@ -48,21 +49,23 @@ module.exports = (db) => {
     //console.log(req.body)
     res.sendStatus(201);
 
-    const messages = req.body['message-box'];
+    const messages = req.body.data.split("=")[1];
+    const buyer_id = req.body.user_id[1];
 
-    console.log('req.body = ', req.body);
+    //console.log('req.body = ', req.body.data.split("=")[1]);
+    //console.log('req.body id = ', req.body.user_id[1]);
 
 
-    const values = [`${messages}`];
+    const values = [`${messages}`, `${buyer_id}`];
     const queryString = `INSERT INTO messages (
-      messages
+      messages, buyer_id
     )
-  VALUES($1)  RETURNING *;`;
+  VALUES($1, $2)  RETURNING *;`;
     db
       .query(queryString, values)
       .then((result) => {
 
-        //console.log(result.rows[0]);
+        console.log(result.rows[0]);
         return result;
       })
       .catch((err) => {

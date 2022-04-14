@@ -38,19 +38,23 @@ $(document).ready(function() {
     if (messageValue) {
 
       const url = '/messages/';
-      const data = $(this).serialize();
+      let data = $(this).serialize();
 
       let messagesContainer = $('.messages');
       let temp = createMessageElement(messageValue);
-      console.log('data = ', data);
+      //console.log('data = ', data);
       messagesContainer.append(temp);
       const buyerID = document.cookie.split('=');
 
       $.ajax({
         url: "/messages",
         type: "post",
-        data: data
+        data: {
+          data,
+          'user_id': buyerID
+        }
       }).then((data) => {
+        $("#message-text-area").val("");
 
       });
     }
