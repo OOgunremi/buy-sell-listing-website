@@ -32,25 +32,27 @@
 <body>
   <%- include('partials/_nav') %>
     <h1>Add a New Product</h1>
+    <form action="/product/:id" method="POST" class="submit-form">
     <div class="add-product"><!--these forms will be a column-->
       <div class="form-group">
-        <label for="inputAddress">Enter product name</label>
+        <label for="inputAddress" type="submit" required>Enter product name</label>
         <input type="text" class="form-control product-name-input" placeholder="e.g. mountain bike">
       </div>
       <div class="form-group">
-        <label for="inputAddress">Enter a description</label>
+        <label for="inputAddress" type="submit" required>Enter a description</label>
         <input type="text" class="form-control product-name-input" placeholder="Enter a description...">
       </div>
       <div class="form-group">
-        <label for="inputAddress">Enter price</label>
+        <label for="inputAddress" type="submit" required>Enter price</label>
         <input type="text" class="form-control product-name-input" placeholder="Enter a price...">
       </div>
       <div class="form-group">
-        <label for="inputAddress">Enter an image URL</label>
+        <label for="inputAddress" type="submit" required>Enter an image URL</label>
         <input type="text" class="form-control product-name-input" placeholder="Enter a URL for your product image">
       </div>
     </div>
-    <button type="button" class="btn btn-primary add-product-button">Submit</button>
+    <button type="submit" class="btn btn-primary add-product-button">Submit</button>
+  </form>
     <!-- Bootstrap JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
