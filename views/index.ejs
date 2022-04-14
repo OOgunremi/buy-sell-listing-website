@@ -49,7 +49,7 @@
       <div class="product-container">
         <% for (let product of products) { %>
         <!--product-feature-->
-        <div class="product-feature">
+        <div class="product-feature" id="<%=product.id%>"><!--is this right or not?-->
           <img src="<%=product.image_url_one %>" class="product-feature-photo">
           <div class="product-header-description">
             <header class="product-header">
