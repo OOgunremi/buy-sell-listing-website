@@ -66,6 +66,36 @@ module.exports = (db) => {
 
   });
 
+  //Add
+
+  router.post("/new", (req, res) => {
+    const name = req.body.name;
+    const price = req.body.price;
+    const description = req.body.description;
+    const imageUrlOne = req.body.image_url_one;
+    //let available = req.body.available;
+    //let sold = req.body.sold;
+    console.log(req.body);
+
+    const available = true;
+    const sold = false;
+    const values = [`${name}`, `${price}`, `${description}`,  `${imageUrlOne}`, `${available}`, `${sold}`];
+    const queryString = `INSERT INTO products (name, price, description, image_url_one, available, sold)
+    VALUES($1, $2, $3, $4, $5, $6)  RETURNING *;`;
+    db
+      .query(queryString, values)
+      .then((result) => {
+        res.redirect('/')
+
+        console.log(result.rows[0]);
+        return result;
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+  });
+
   //Edit
   router.post("/:id", (req, res) => {
     console.log('!!!in the edit route!!!!');
@@ -90,36 +120,7 @@ module.exports = (db) => {
   });
 
 
-  //Add
 
-  router.post("/", (req, res) => {
-    const name = req.body.name;
-    const price = req.body.price;
-    const sellerId = req.body.seller_id;
-    const email = req.body.email;
-    const description = req.body.description;
-    const category = req.body.category;
-    const imageUrlOne = req.body.image_url_one;
-    let available = req.body.available;
-    let sold = req.body.sold;
-    available = true;
-    sold = false;
-//grab 90 to 102, arguments, all the values are from 78 to 88
-    const values = [`${name}`, `${price}`, `${sellerId}`, `${email}`, `${description}`, `${category}`, `${imageUrlOne}`, `${available}`, `${sold}`];
-    const queryString = `INSERT INTO products (name, price, seller_id, description, category, image_url_one, available, sold)
-  VALUES($1, $2, $3, $4, $5, $6, $7, $8)  RETURNING *;`;
-    db
-      .query(queryString, values)
-      .then((result) => {
-
-        console.log(result.rows[0]);
-        return result;
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-
-  });
 
 
   //Delete
