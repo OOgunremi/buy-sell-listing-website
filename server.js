@@ -14,6 +14,9 @@ const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
+//cookieParser
+// app.use(express.cookieParser());
+
 //require product functions
 const productsFunctions = require('./services/products-functions');
 
@@ -58,7 +61,7 @@ app.use("/favourites", favouritesRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/test", async (req, res) => {
-  res.render("admin_products");
+  res.render("product");
 });
 
 app.get("/", async (req, res) => {
@@ -70,11 +73,39 @@ app.get("/", async (req, res) => {
 
 
 app.get("/msg", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-  res.render("message");
+  let query = `SELECT messages.id, users.username, messages  FROM messages JOIN users
+    ON messages.buyer_id = users.id`;
+    console.log(query);
+    db.query(query)
+      .then(data => {
+        console.log('data.rows = ', data.rows);
+        res.render('message',{messages: data.rows});
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
 });
 
+// WHERE user_id=$1 and product_id=$2
+// [req.query.user_id, req.query.product_id]
 app.get("/fav", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-  res.render("favorites");
+  let query = `SELECT * FROM favourites WHERE user_id=$1`;
+    // console.log('server side', query);
+    // console.log('query values', req.query);
+    // console.log('cookies', res.cookie('user_id'));
+    db.query(query, [req.query.user_id])
+      .then(data => {
+        const favourites = data.rows;
+        console.log('favorites', req.cookies, 'user_id', req.query.user_id);
+        res.render("favorites", { favourites });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
 });
 
 app.get("/msghistory", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
