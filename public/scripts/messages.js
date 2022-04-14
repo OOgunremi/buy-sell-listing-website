@@ -38,7 +38,7 @@ $(document).ready(function() {
     if (messageValue) {
 
       const url = '/messages/';
-      const data = $((this).serialize(), 1);
+      const data = $(this).serialize();
 
       let messagesContainer = $('.messages');
       let temp = createMessageElement(messageValue);
