@@ -61,6 +61,24 @@ module.exports = (db) => {
 
   //Edit
   router.post("/:id", (req, res) => {
+    console.log('!!!in the edit route!!!!');
+    const values = [req.params.id, req.body.sold];
+    const query = `
+    UPDATE products
+    SET sold = $2
+    WHERE products.id = $1 RETURNING *;
+    `;
+
+    db.query(query, values)
+      .then(data => {
+        const products = data.rows;
+        console.log(data.rows[0]);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
 
   });
 
