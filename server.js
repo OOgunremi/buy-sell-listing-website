@@ -58,7 +58,7 @@ app.use("/favourites", favouritesRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/test", async (req, res) => {
-  res.render("favorites");
+  res.render("product");
 });
 
 app.get("/", async (req, res) => {
@@ -71,6 +71,14 @@ app.get("/", async (req, res) => {
 
 app.get("/msg", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   res.render("message");
+});
+
+app.get("/fav", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+  res.render("favorites");
+});
+
+app.get("/msghistory", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+  res.render("message_history");
 });
 
 app.listen(PORT, () => {
