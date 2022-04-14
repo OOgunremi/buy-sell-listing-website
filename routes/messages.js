@@ -8,10 +8,10 @@
 const express = require('express');
 const router  = express.Router();
 
+
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT users.id, messages, username FROM messages JOIN users
-    ON buyer_id = users.id `;
+    let query = `SELECT * FROM messages`;
     console.log(query);
     db.query(query)
       .then(data => {
@@ -48,24 +48,21 @@ module.exports = (db) => {
     //console.log(req.body)
     res.sendStatus(201);
 
-    const messages = req.body.messages;
+    const messages = req.body['message-box'];
 
     console.log('req.body = ', req.body);
 
 
     const values = [`${messages}`];
     const queryString = `INSERT INTO messages (
-      product_id,
-      buyer_id,
-      seller_id,
       messages
     )
-  VALUES($1, $2, $3, $4)  RETURNING *;`;
+  VALUES($1)  RETURNING *;`;
     db
       .query(queryString, values)
       .then((result) => {
 
-        console.log(result.rows[0]);
+        //console.log(result.rows[0]);
         return result;
       })
       .catch((err) => {

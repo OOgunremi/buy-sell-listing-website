@@ -1,32 +1,5 @@
 // messages page jquery functions
 
-// $(() => {
-//   /*
-//     // todo monitor if a conversation was selected
-//     // todo monitor send button to send message data back to the seller
-//     todo clear out the screen
-//     todo get the conversation messages
-//     todo setinterval update the conversation messsages
-//       ! POTENTIAL PROBLEM - need to make sure that the set interval stops when the user leaves this page
-//   */
-
-//   // ! tags to be updated once that is completed
-//   $('.conversation').on('click',onConversationClick);
-//   // ! tags to be updated once that is completed
-//   $('.conversationSend').on('click', onConversationSendClick);
-// });
-
-// let renderMessages = function (messages) {
-//   //resets the elements in the messages container
-
-
-//   //loops through all the array of messages and prepends HTML formated messages for chronological display
-//   for (let message of messages) {
-//     let messageHTML = createMessageElement(message);
-//     messagesContainer.append(messageHTML);
-//   }
-// };
-
 //protects against XSS Hacks
 const escapeHacks = function (str) {
   let div = document.createElement("div");
@@ -61,38 +34,26 @@ $(document).ready(function() {
 
     //grabs tweet values excluding spaces at begining and the end
     let messageValue = $("#message-text-area").val().trim();
-    console.log('tweetValue = ', messageValue);
     //checks if no character was typed or if excess was typed, returns error messages accordingly
     if (messageValue) {
 
-      // POST request
       const url = '/messages/';
-      const data = $(this).serialize();
-      console.log('data = ', data);
+      const data = $((this).serialize(), 1);
+
       let messagesContainer = $('.messages');
       let temp = createMessageElement(messageValue);
-      console.log('temp = ', temp);
+      console.log('data = ', data);
       messagesContainer.append(temp);
-      console.log('messagesContainer = ', messagesContainer);
+      const buyerID = document.cookie.split('=');
+
       $.ajax({
         url: "/messages",
         type: "post",
         data: data
-
-
       }).then((data) => {
-        //loads tweet GET request automatically without browser refresh
-        // loadMessages();
+
       });
     }
   });
 
-  // GET request function
-  const loadMessages = function() {
-    $.get('/messages', function(data, status) {
-      // console.log(data);
-      //renderMessages(data);
-    });
-  };
-  loadMessages();
 });
