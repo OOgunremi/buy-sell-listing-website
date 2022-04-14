@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/styles/banner.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/product-feature.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/add_product.css" type="text/css" />
 
 
 
@@ -32,24 +33,24 @@
   <%- include('partials/_nav') %>
     <h1>Add a New Product</h1>
     <div class="add-product"><!--these forms will be a column-->
-      <div>
-        <p>Product name</p>
-        <textarea></textarea>
+      <div class="form-group">
+        <label for="inputAddress">Enter product name</label>
+        <input type="text" class="form-control product-name-input" placeholder="e.g. mountain bike">
       </div>
-      <div>
-        <p>Description</p>
-        <textarea></textarea>
+      <div class="form-group">
+        <label for="inputAddress">Enter a description</label>
+        <input type="text" class="form-control product-name-input" placeholder="Enter a description...">
       </div>
-      <div>
-        <p>Price</p>
-        <textarea></textarea>
+      <div class="form-group">
+        <label for="inputAddress">Enter price</label>
+        <input type="text" class="form-control product-name-input" placeholder="Enter a price...">
       </div>
-      <div>
-        <p>image url</p>
-        <textarea></textarea>
+      <div class="form-group">
+        <label for="inputAddress">Enter an image URL</label>
+        <input type="text" class="form-control product-name-input" placeholder="Enter a URL for your product image">
       </div>
     </div>
-    <button class="post-button">Post</button>
+    <button type="button" class="btn btn-primary add-product-button">Submit</button>
     <!-- Bootstrap JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
