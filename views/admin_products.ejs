@@ -24,40 +24,59 @@
 
   <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/admin.js"></script>
   <title>Document</title>
 </head>
 
 <body>
   <%- include('partials/_nav') %>
     <!-- <main class="product-page-main"> -->
-      <!--add a route to the add products page-->
-      <div class="my-products-header">
-        <h1>My Products</h1>
-        <button type="button" class="btn btn-primary add-product-button">Add product</button>
-      </div>
-      <div class="admin-products-container">
-        <!--My products (need way to add multiple of this)-->
-        <div class="product-feature">
-          <!--can I use the same class and css as the one in homepage?-->
-          <img src="/images/bike-photo1.png" class="admin-product-photo">
-          <div class="product-header-description">
-            <!--this div will be a column-->
-            <header class="product-header">
-              <h3>Product name</h3>
-              <h3>$100</h3>
-            </header>
-            <div>
-              <p>Product description</p>
-            </div>
-          </div>
-          <div class="edit-product">
-            <!--these buttons will be a column)-->
-            <button type="button" class="btn btn-warning sold-button">Mark as sold</button>
-            <button type="button" class="btn btn-danger remove-button">Remove</button>
+    <!--add a route to the add products page-->
+    <div class="my-products-header">
+      <h1>My Products</h1>
+      <button type="button" class="btn btn-primary add-product-button">Add product</button>
+    </div>
+    <div class="admin-products-container">
+      <!--My products (need way to add multiple of this)-->
+      <div class="product-feature" id="1">
+        <!--can I use the same class and css as the one in homepage?-->
+        <img src="/images/bike-photo1.png" class="admin-product-photo">
+        <div class="product-header-description">
+          <!--this div will be a column-->
+          <header class="product-header">
+            <h3>Product name</h3>
+            <h3>$100</h3>
+          </header>
+          <div>
+            <p>Product description</p>
           </div>
         </div>
+        <div class="edit-product">
+          <!--these buttons will be a column)-->
+          <button type="button" class="btn btn-warning sold-button">Mark as sold</button>
+          <button type="button" class="btn btn-danger remove-button">Remove</button>
+        </div>
       </div>
+      <div class="product-feature" id="2">
+        <!--can I use the same class and css as the one in homepage?-->
+        <img src="/images/bike-photo1.png" class="admin-product-photo">
+        <div class="product-header-description">
+          <!--this div will be a column-->
+          <header class="product-header">
+            <h3>Product name</h3>
+            <h3>$101</h3>
+          </header>
+          <div>
+            <p>Product description</p>
+          </div>
+        </div>
+        <div class="edit-product">
+          <!--these buttons will be a column)-->
+          <button type="button" class="btn btn-warning sold-button">Mark as sold</button>
+          <button type="button" class="btn btn-danger remove-button">Remove</button>
+        </div>
+      </div>
+    </div>
     <!-- </main> -->
     <!-- Bootstrap JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
