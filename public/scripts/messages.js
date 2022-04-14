@@ -1,46 +1,59 @@
 // messages page jquery functions
 
-$(() => {
-  /*
-    // todo monitor if a conversation was selected
-    // todo monitor send button to send message data back to the seller
-    todo clear out the screen
-    todo get the conversation messages
-    todo setinterval update the conversation messsages
-      ! POTENTIAL PROBLEM - need to make sure that the set interval stops when the user leaves this page
-  */
+//protects against XSS Hacks
+const escapeHacks = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
-  // ! tags to be updated once that is completed
-  $('.conversation').on('click',onConversationClick);
-  // ! tags to be updated once that is completed
-  $('.conversationSend').on('click', onConversationSendClick);
+const createMessageElement = function(message) {
+  let messageHTML = `
+  <article class="message-box">
+  <header class="message-header">
+    <div class="message-user">
+      <h3>Me</h3>
+    </div>
+  </header>
+  <p class="message">
+    ${message}
+  </p>
+</article>`;
+  return messageHTML;
+
+};
+
+//waits for the page to fully load before calling the callback
+$(document).ready(function() {
+  console.log('document ready = ');
+
+  //This is the submit handler
+  $(".textsubmit").submit(function(event) {
+    //prevents route redirection upon submission
+    event.preventDefault();
+
+    //grabs tweet values excluding spaces at begining and the end
+    let messageValue = $("#message-text-area").val().trim();
+    //checks if no character was typed or if excess was typed, returns error messages accordingly
+    if (messageValue) {
+
+      const url = '/messages/';
+      const data = $(this).serialize();
+
+      let messagesContainer = $('.messages');
+      let temp = createMessageElement(messageValue);
+      console.log('data = ', data);
+      messagesContainer.append(temp);
+      const buyerID = document.cookie.split('=');
+
+      $.ajax({
+        url: "/messages",
+        type: "post",
+        data: data
+      }).then((data) => {
+
+      });
+    }
+  });
+
 });
-
-const createMessageElement = function() {
-
-};
-
-const renderMessages = function() {
-
-};
-
-const loadMessages = function() {
-
-};
-
-const onConversationClick = function(e) {
-  alert('still in development');
-  e.preventDefault(); // ! this might not be necessary
-
-  // clear container
-  $('.conversation-container').empty();
-
-  // render messages
-};
-
-const onConversationSendClick = function(e) {
-  alert('still in development');
-  e.preventDefault(); // ! this might not be necessary
-
-
-};
