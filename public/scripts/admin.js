@@ -6,17 +6,15 @@ $(() => {
 });
 
 const onSoldButtonClick = function() {
-  // alert('still in development');  // ! temp
-
   // check if there is a cookie before adding to favourites
   if (!document.cookie.length) {
     alert('please login to add to your favourites');
     return;
   }
 
-  // todo test when there is multiple products on the same page
   // get information about the current product
-  const $productId = $(this).parents('.product-feature').attr('id');
+  const $productFeature = $(this).parents('.product-feature');
+  const $productId = $productFeature.attr('id');
 
   $.get(`/products/${$productId}`)
     .then((data) => {
@@ -31,14 +29,14 @@ const onSoldButtonClick = function() {
 
       // update the information in the database
       const soldState = !data.products[0].sold ? true : false;
-      $.post(`/products/${$productId}`, {sold: soldState}).then().catch(error => console.log(error));
+      $.post(`/products/${$productId}`, {sold: soldState})
+        .done(alert(soldState ? 'product sold' : 'product available'))
+        .catch(error => console.log(error));
     })
     .catch(error => console.log(error));
 };
 
 const onRemoveButtonClick = function() {
-  // alert('still in development');  // ! temp
-
   // check if user is logged in
   if (!document.cookie.length) {
     alert('please login to add to your favourites');
