@@ -38,50 +38,36 @@
     </div>
     <div class="admin-products-container">
       <!--My products (need way to add multiple of this)-->
-      <div class="product-feature" id="1">
-        <!--can I use the same class and css as the one in homepage?-->
-        <img src="/images/bike-photo1.png" class="admin-product-photo">
-        <div class="product-header-description">
-          <!--this div will be a column-->
-          <header class="product-header">
-            <h3>Product name</h3>
-            <h3>$100</h3>
-          </header>
-          <div>
-            <p>Product description</p>
+
+      <% for (let product of products) { %>
+        <div class="product-feature" id="<%= product.id %>">
+          <!--can I use the same class and css as the one in homepage?-->
+          <img src="<%= product.image_url_one %>" class="admin-product-photo">
+          <div class="product-header-description">
+            <!--this div will be a column-->
+            <header class="product-header">
+              <h3>
+                <%= product.name %>
+              </h3>
+              <h3>$<%= product.price %>
+              </h3>
+            </header>
+            <div>
+              <p>
+                <%= product.description %>
+              </p>
+            </div>
+          </div>
+          <div class="edit-product">
+            <!--these buttons will be a column)-->
+            <button type="button" class="btn btn-warning sold-button">Mark as sold</button>
+            <button type="button" class="btn btn-danger remove-button">Remove</button>
           </div>
         </div>
-        <div class="edit-product">
-          <!--these buttons will be a column)-->
-          <button type="button" class="btn btn-warning sold-button">Mark as sold</button>
-          <button type="button" class="btn btn-danger remove-button">Remove</button>
-        </div>
-      </div>
-      <div class="product-feature" id="2">
-        <!--can I use the same class and css as the one in homepage?-->
-        <img src="/images/bike-photo1.png" class="admin-product-photo">
-        <div class="product-header-description">
-          <!--this div will be a column-->
-          <header class="product-header">
-            <h3>Product name</h3>
-            <h3>$101</h3>
-          </header>
-          <div>
-            <p>Product description</p>
-          </div>
-        </div>
-        <div class="edit-product">
-          <!--these buttons will be a column)-->
-          <button type="button" class="btn btn-warning sold-button">Mark as sold</button>
-          <button type="button" class="btn btn-danger remove-button">Remove</button>
-        </div>
-      </div>
+        <% } %>
     </div>
     <!-- </main> -->
     <!-- Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
       crossorigin="anonymous"></script>
