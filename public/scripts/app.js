@@ -4,8 +4,15 @@ $(() => {
 
   // price button updated
   $('.filter-button').on('click',onPriceRangeButtonClick);
-});
 
+  // let url = '/products';
+
+  // $.get(url).then(function(json)  {
+
+  //   $('.product-container').empty();
+  //   renderProducts(json);
+  // }).catch(error => console.log(error));
+});
 
 // prevent cross site scripting
 const escape = function(str) {

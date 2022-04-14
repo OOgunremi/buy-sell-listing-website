@@ -47,18 +47,19 @@
         id="banner">
       <!--product container-->
       <div class="product-container">
+        <% for (let product of products) { %>
         <!--product-feature-->
         <div class="product-feature">
-          <img src="images/bike-photo1.png" class="product-feature-photo">
+          <img src="<%=product.image_url_one %>" class="product-feature-photo">
           <div class="product-header-description">
             <header class="product-header">
-              <h3>Product name</h3>
-              <h3>$100</h3>
+              <h3><%=product.name%></h3>
+              <h3>$<%=product.price%></h3>
             </header>
-            <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quam dolor, dictum nec vestibulum dapibus, sodales id nunc. Aenean nec suscipit odio. Curabitur pulvinar mi sit amet sem fermentum tincidunt. Phasellus volutpat tincidunt sapien, ut sodales tellus sagittis ut. </p>
+            <p class="product-description"><%=product.description%></p>
           </div>
         </div>
-        <!--2nd product feature-->
+        <!-- 2nd product feature
         <div class="product-feature">
           <img src="images/bike-photo1.png" class="product-feature-photo">
           <div class="product-header-description">
@@ -68,8 +69,8 @@
             </header>
             <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quam dolor, dictum nec vestibulum dapibus, sodales id nunc. Aenean nec suscipit odio. Curabitur pulvinar mi sit amet sem fermentum tincidunt. Phasellus volutpat tincidunt sapien, ut sodales tellus sagittis ut. </p>
           </div>
-        </div>
-
+        </div> -->
+        <% } %>
       </div>
   </main>
   <!-- Bootstrap JS -->
