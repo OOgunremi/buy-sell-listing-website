@@ -6,7 +6,7 @@ const productsFunctions = require('../services/products-functions');
 
 module.exports = (db) => {
   //Browse
-  router.get("/", async (req, res) => {
+  router.get("/", async(req, res) => {
     let priceMin = req.query.priceMin;
     let priceMax = req.query.priceMax;
     const filteredProducts = await productsFunctions.getFilterProducts(db, priceMin, priceMax);
@@ -85,7 +85,7 @@ module.exports = (db) => {
     db
       .query(queryString, values)
       .then((result) => {
-        res.redirect('/')
+        res.redirect('/');
 
         console.log(result.rows[0]);
         return result;
@@ -98,7 +98,6 @@ module.exports = (db) => {
 
   //Edit
   router.post("/:id", (req, res) => {
-    console.log('!!!in the edit route!!!!');
     const values = [req.params.id, req.body.sold];
     const query = `
     UPDATE products
@@ -109,7 +108,7 @@ module.exports = (db) => {
     db.query(query, values)
       .then(data => {
         const products = data.rows;
-        console.log(data.rows[0]);
+        // console.log(data.rows[0]);
       })
       .catch(err => {
         res
