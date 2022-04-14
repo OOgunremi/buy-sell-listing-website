@@ -81,6 +81,9 @@ app.get("/msghistory", async (req, res) => { //make sure any app.get("/urlname")
   res.render("message_history");
 });
 
+app.get("/new", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+  res.render("add_product");
+});
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
