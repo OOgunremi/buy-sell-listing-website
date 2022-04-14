@@ -45,9 +45,9 @@ const onRemoveButtonClick = function() {
     return;
   }
 
-  // todo test when there is multiple products on the same page
   // get information about the current product
-  const $productId = $(this).parents('.product-feature').attr('id');
+  const $productFeature = $(this).parents('.product-feature');
+  const $productId = $productFeature.attr('id');
 
   $.get(`/products/${$productId}`)
     .then((data) => {
@@ -62,6 +62,7 @@ const onRemoveButtonClick = function() {
 
       // set the product availabe to false
       $.post(`/products/${$productId}/delete`, function() {
+        $productFeature.remove();
         alert('product deleted');
       }).then().catch(error => console.log(error));
     })
