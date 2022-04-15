@@ -27,6 +27,9 @@ const getFilterProducts = async(db, priceMin, priceMax) => {
 
 // returns an object with the cookies' name as keys
 const getAppCookies = (req) => {
+  if (!req.headers.cookie) {
+    return null;
+  }
   // We extract the raw cookies from the request headers
   const rawCookies = req.headers.cookie.split('; ');
   // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
@@ -41,7 +44,12 @@ const getAppCookies = (req) => {
 };
 
 const getAdminProducts = async(db,req) => {
-  const id = getAppCookies(req)['user_id'];
+  // const id = getAppCookies(req)['user_id'];
+  const id = getAppCookies(req);
+
+  if (!id) {
+    return null;
+  }
 
   let queryString = `
   SELECT *
@@ -50,7 +58,7 @@ const getAdminProducts = async(db,req) => {
   AND seller_id = $1;
   `;
 
-  const results = await db.query(queryString, [id]);
+  const results = await db.query(queryString, [id['user_id']]);
 
   return results.rows;
 };
