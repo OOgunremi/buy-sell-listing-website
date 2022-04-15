@@ -66,19 +66,21 @@ app.use("/favourites", favouritesRoutes(db));
 // });
 
 app.get("/", async(req, res) => {
+  const user = await productsFunctions.getUserDetails(db, req);
   let priceMin = req.query.priceMin;
   let priceMax = req.query.priceMax;
   const products = await productsFunctions.getFilterProducts(db, priceMin, priceMax);
-  res.render("index", { products });
+  res.render("index", { user, products });
 });
 
 app.get("/admin", async(req, res) => {
+  const user = await productsFunctions.getUserDetails(db, req);
   const products = await productsFunctions.getAdminProducts(db, req);
-  if (!products) {
+  if (!products || !user.admin) {
     res.redirect('/');
     return;
   }
-  res.render("admin_products", { products });
+  res.render("admin_products", { user, products });
 });
 
 // app.get("/msg", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
@@ -93,16 +95,16 @@ app.get("/fav", async(req, res) => { //make sure any app.get("/urlname") I creat
   // console.log('query values', req.query);
   // const cookieValue = productsFunctions.getAppCookies(req)['user_id'];
   const cookieValue = productsFunctions.getAppCookies(req);
-
   if (!cookieValue) {
     res.redirect('/');
     return;
   }
+  const user = await productsFunctions.getUserDetails(db, req);
   db.query(query, [cookieValue['user_id']]) //productsFunctions.getAppCookies(req)['user_id'] of the user logged in
     .then(data => {
       const favourites = data.rows;
       // console.log('data.rows', data)
-      res.render('favorites', { favourites });
+      res.render('favorites', { user, favourites });
     })
     .catch(err => {
       res
@@ -116,11 +118,12 @@ app.get("/fav", async(req, res) => { //make sure any app.get("/urlname") I creat
 app.get("/product/:id", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   const id = req.params.id;
   let query = `SELECT * FROM products WHERE id = ${id}`; //line 54 to 65, take in arguments db and id
+  const user = await productsFunctions.getUserDetails(db, req);
   db.query(query)
     .then(data => {
       const product = data.rows[0];
       console.log(product);
-      res.render("product", {product});
+      res.render("product", {user, product});
     })
     .catch(err => {
       res
@@ -130,7 +133,12 @@ app.get("/product/:id", async(req, res) => { //make sure any app.get("/urlname")
 });
 
 app.get("/new", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-  res.render("add_product");
+  const user = await productsFunctions.getUserDetails(db, req);
+  if (!user || !user.admin) {
+    res.redirect('/');
+    return;
+  }
+  res.render("add_product", {user});
 });
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
