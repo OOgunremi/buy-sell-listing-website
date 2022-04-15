@@ -53,7 +53,10 @@
           <img src="<%=product.image_url_one %>" class="product-feature-photo">
           <div class="product-header-description">
             <header class="product-header">
-              <h3><%=product.name%></h3>
+              <a href="/product/<%=product.id%>">
+                <h3><%=product.name%></h3>
+              </a>
+
               <h3>$<%=product.price%></h3>
             </header>
             <p class="product-description"><%=product.description%></p>
