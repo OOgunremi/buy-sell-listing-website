@@ -35,23 +35,20 @@
     <!--product container-->
     <div class="product-container">
       <!--1st favorite-->
-      <div class="product-feature">
-        <img src="images/bike-photo1.png" class="product-feature-photo">
+      <% for (let favourite of favourites) { %>
+      <div class="product-feature" id="<$=favourite.id%>">
+        <img src="<%=favourite.image_url_one%>" class="product-feature-photo">
         <div class="product-header-description">
           <header class="product-header">
-            <h3>Product name</h3>
-            <h3>$100</h3>
+            <h3><%=favourite.name%></h3>
+            <h3>$<%=favourite.price%></h3>
           </header>
-          <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quam dolor,
-            dictum nec vestibulum dapibus, sodales id nunc. Aenean nec suscipit odio. Curabitur pulvinar mi sit amet sem
-            fermentum tincidunt. Phasellus volutpat tincidunt sapien, ut sodales tellus sagittis ut. </p>
-        </div>
-        <div>
-          <button type="button" class="btn btn-danger delete-fav" action="/favorites/:id/delete" method="POST">Delete</button>
+          <p class="product-description"><%=favourite.description%></p>
         </div>
       </div>
+      <% } %>
       <!--2nd favorite-->
-      <div class="product-feature">
+      <!-- <div class="product-feature" product="2">
         <img src="images/bike-photo1.png" class="product-feature-photo">
         <div class="product-header-description">
           <header class="product-header">
@@ -61,10 +58,10 @@
           <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quam dolor,
             dictum nec vestibulum dapibus, sodales id nunc. Aenean nec suscipit odio. Curabitur pulvinar mi sit amet sem
             fermentum tincidunt. Phasellus volutpat tincidunt sapien, ut sodales tellus sagittis ut. </p>
-        </div>
-        <div>
+        </div> -->
+        <!-- <div>
           <button type="button" class="btn btn-danger delete-fav" action="/favorites/:id/delete" method="POST">Delete</button>
-        </div>
+        </div> -->
       </div>
 
     </div>

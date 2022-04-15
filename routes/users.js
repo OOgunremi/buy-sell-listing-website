@@ -11,6 +11,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/login/:id", (req, res) => {
     res.cookie('user_id', req.params.id);
+    console.log(req.params.id)
     res.redirect('/');
   });
   return router;
