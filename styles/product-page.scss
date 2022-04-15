@@ -17,13 +17,23 @@
   justify-content: space-between;
 }
 
+.product-name-sold {
+  display:flex;
+  flex-direction: row;
+}
+
+.sold-label {
+  margin:1em;
+  margin-right:5em;
+}
+
 .fav-button {
   margin-top:1em;
   margin-bottom:1em;
 }
 
 .product-page-photo {
-  width:100%
+  width:100%;
 }
 
 .product-description {

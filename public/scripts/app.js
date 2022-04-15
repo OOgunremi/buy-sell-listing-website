@@ -31,11 +31,13 @@ const createProductElement = function(itemObj) {
     ? itemObj.available
     ? itemObj.sold
   */
-  return $('<div class="product-feature"></div>').append(`
+  return $(`<div class="product-feature id="${escape(itemObj.id)}"></div>`).append(`
       <img src="${escape(itemObj.image_url_one)}" class="product-feature-photo">
       <div class="product-header-description">
         <header class="product-header">
-          <h3>${escape(itemObj.name)}</h3>
+          <a href="/product/${escape(itemObj.id)}">
+              <h3>${escape(itemObj.name)}</h3>
+          </a>
           <h3>$${escape(itemObj.price)}</h3>
         </header>
         <p class="product-description">${escape(itemObj.description)}</p>
