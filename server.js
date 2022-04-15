@@ -54,35 +54,36 @@ app.use("/users", usersRoutes(db));
 app.use("/messages", messagesRoutes(db));
 app.use("/favourites", favouritesRoutes(db));
 
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/test", async (req, res) => {
-  res.render("message");
-});
+// app.get("/test", async(req, res) => {
+//   res.render("message");
+// });
 
-app.get("/", async (req, res) => {
+app.get("/", async(req, res) => {
   let priceMin = req.query.priceMin;
   let priceMax = req.query.priceMax;
   const products = await productsFunctions.getFilterProducts(db, priceMin, priceMax);
   res.render("index", { products });
 });
 
-app.get("/admin", async (req, res) => {
+app.get("/admin", async(req, res) => {
   const products = await productsFunctions.getAdminProducts(db, req);
   res.render("admin_products", { products });
 });
 
-app.get("/msg", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+// app.get("/msg", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
 
-});
+// });
 
 
 //for favorite of favorites favorite.product_id
-app.get("/fav", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+app.get("/fav", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   let query = `SELECT products.id, products.name, products.price, products.description, products.image_url_one FROM favourites JOIN products ON product_id = products.id WHERE user_id=$1`;
   // console.log('server side', query);
   // console.log('query values', req.query);
@@ -100,11 +101,24 @@ app.get("/fav", async (req, res) => { //make sure any app.get("/urlname") I crea
   // res.render("favorites");
 });
 
-app.get("/msghistory", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-  res.render("message_history");
+
+app.get("/product/:id", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+  const id = req.params.id;
+  let query = `SELECT * FROM products WHERE id = ${id}`; //line 54 to 65, take in arguments db and id
+  db.query(query)
+    .then(data => {
+      const product = data.rows[0];
+      console.log(product);
+      res.render("product", {product});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
-app.get("/new", async (req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+app.get("/new", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
   res.render("add_product");
 });
 app.listen(PORT, () => {

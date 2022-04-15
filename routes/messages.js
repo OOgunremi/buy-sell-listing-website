@@ -24,34 +24,24 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-    // let query = `SELECT messages.id, users.username, messages  FROM messages JOIN users
-    // ON messages.buyer_id = users.id`;
-    // console.log(query);
-    // db.query(query)
-    //   .then(data => {
-    //     console.log('data.rows = ', data.rows);
-    //     res.json({messages: data.rows});
-    //   })
-    //   .catch(err => {
-    //     res
-    //       .status(500)
-    //       .json({ error: err.message });
-    //   });
-  });
 
-  // let query = `SELECT messages.id, users.username, messages  FROM messages JOIN users
-  //   ON messages.buyer_id = users.id`;
+
+  //   let query = `SELECT messages.id, users.username, messages  FROM messages JOIN users
+  // ON messages.buyer_id = users.id`;
   //   console.log(query);
   //   db.query(query)
   //     .then(data => {
   //       console.log('data.rows = ', data.rows);
-  //       res.render('message',{messages: data.rows});
+  //       res.json({messages: data.rows});
   //     })
   //     .catch(err => {
   //       res
   //         .status(500)
   //         .json({ error: err.message });
   //     });
+  });
+
+
 
   router.get("/:id", (req, res) => {
     const id = req.params.id;
