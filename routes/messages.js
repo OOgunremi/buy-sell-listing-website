@@ -13,7 +13,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     let query = `SELECT messages.id, users.username, messages  FROM messages JOIN users
     ON messages.buyer_id = users.id`;
-    console.log(query);
+    console.log('query', query);
     db.query(query)
       .then(data => {
         console.log('data.rows = ', data.rows);
@@ -63,10 +63,10 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
 
-    //console.log(req.body)
+    console.log('req.body', req.body)
     res.sendStatus(201);
-
-    const messages = req.body.data.split("=")[1];
+    const messages = req.body.data.message;
+    // const messages = req.body.data.split("=")[1];
     const buyer_id = req.body.user_id[1];
 
     //console.log('req.body = ', req.body.data.split("=")[1]);
@@ -82,7 +82,7 @@ module.exports = (db) => {
       .query(queryString, values)
       .then((result) => {
 
-        console.log(result.rows[0]);
+        console.log('result.rows[0]', result.rows[0]);
         return result;
       })
       .catch((err) => {
