@@ -8,7 +8,7 @@ $(() => {
 const onSoldButtonClick = function() {
   // check if there is a cookie before adding to favourites
   if (!document.cookie.length) {
-    alert('please login to add to your favourites');
+    alert('please login to mark product');
     return;
   }
 
@@ -39,7 +39,7 @@ const onSoldButtonClick = function() {
 const onRemoveButtonClick = function() {
   // check if user is logged in
   if (!document.cookie.length) {
-    alert('please login to add to your favourites');
+    alert('please login to delete');
     return;
   }
 

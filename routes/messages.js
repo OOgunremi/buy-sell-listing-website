@@ -8,16 +8,24 @@
 const express = require('express');
 const router  = express.Router();
 
+//require product functions
+const productsFunctions = require('../services/products-functions');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    let user = undefined;
+    (async() => {
+      user = await productsFunctions.getUserDetails(db, req);
+    })();
     let query = `SELECT messages.id, users.username, messages  FROM messages JOIN users
     ON messages.buyer_id = users.id`;
     console.log('query', query);
     db.query(query)
       .then(data => {
+
+
         console.log('data.rows = ', data.rows);
-        res.render('message',{messages: data.rows});
+        res.render('message',{user, messages: data.rows});
       })
       .catch(err => {
         res
@@ -63,7 +71,7 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
 
-    console.log('req.body', req.body)
+    console.log('req.body', req.body);
     res.sendStatus(201);
     const messages = req.body.data.message;
     // const messages = req.body.data.split("=")[1];
