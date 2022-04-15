@@ -61,7 +61,7 @@ app.use("/favourites", favouritesRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/test", async (req, res) => {
-  res.render("message");
+  res.render("product");
 });
 
 app.get("/", async (req, res) => {
