@@ -39,7 +39,7 @@ $(document).ready(function() {
 
       const url = '/messages/';
       let data = $(this).serialize();
-
+      console.log('data', data);
       let messagesContainer = $('.messages');
       let temp = createMessageElement(messageValue);
       //console.log('data = ', data);
@@ -49,8 +49,8 @@ $(document).ready(function() {
       $.ajax({
         url: "/messages",
         type: "post",
-        data: {
-          data,
+        data:{
+          data: {message: messageValue},
           'user_id': buyerID
         }
       }).then((data) => {
