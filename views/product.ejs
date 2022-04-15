@@ -38,20 +38,19 @@
         <!--column-->
         <div class="product-name-favorite-button">
           <!--row-->
-          <h1>Product name</h1>
+          <h1><%= product.name %></h1>
           <button type="button" class="btn btn-success fav-button" action="/favorites/:id"
             method="POST">Favorite</button>
         </div>
-        <img src="/images/bike-photo1.png" class="product-page-photo">
+        <img src=<%= product.image_url_one %> class="product-page-photo">
         <div class="product-description">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu tincidunt enim, nec congue turpis. Etiam eu
-            volutpat massa. Vivamus accumsan urna tellus.</p>
+          <p><%= product.description %></p>
         </div>
       </div>
       <!--contact seller-->
       <div class="contact-seller">
-        <h3>Contact seller name</h3>
-        <button type="button" class="btn btn-primary send-button">Message seller</button>
+        <h3>Contact seller</h3>
+        <a type="button" class="btn btn-primary send-button" href="/messages">Message seller</a>
       </div>
     </div>
     <!-- Bootstrap JS -->

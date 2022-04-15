@@ -51,6 +51,7 @@ app.use("/users", usersRoutes(db));
 app.use("/messages", messagesRoutes(db));
 app.use("/favourites", favouritesRoutes(db));
 
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -81,8 +82,23 @@ app.get("/fav", async(req, res) => { //make sure any app.get("/urlname") I creat
   res.render("favorites");
 });
 
-app.get("/msghistory", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
-  res.render("message_history");
+app.get("/product/:id", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
+  const id = req.params.id;
+  let query = `SELECT * FROM products WHERE id = ${id}`; //line 54 to 65, take in arguments db and id
+  db.query(query)
+    .then(data => {
+      const product = data.rows[0];
+      console.log(product);
+      res.render("product", {product});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
+
+
 });
 
 app.get("/new", async(req, res) => { //make sure any app.get("/urlname") I create here doesn't conflict with app.use("/names")
