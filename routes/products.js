@@ -79,15 +79,16 @@ module.exports = (db) => {
 
     const available = true;
     const sold = false;
-    const values = [`${name}`, `${price}`, `${description}`,  `${imageUrlOne}`, `${available}`, `${sold}`];
-    const queryString = `INSERT INTO products (name, price, description, image_url_one, available, sold)
-    VALUES($1, $2, $3, $4, $5, $6)  RETURNING *;`;
+    const values = [`${name}`, `${price}`, `${productsFunctions.getAppCookies(req)['user_id']}`, `${description}`,  `${imageUrlOne}`, `${available}`, `${sold}`];
+    const queryString = `INSERT INTO products (name, price, seller_id, description, image_url_one, available, sold)
+    VALUES($1, $2, $3, $4, $5, $6, $7)  RETURNING *;`;
+    // console.log("asdfasdfasdfasdfasfd")
     db
       .query(queryString, values)
       .then((result) => {
         res.redirect('/');
 
-        console.log(result.rows[0]);
+        console.log('add product', result.rows[0]);
         return result;
       })
       .catch((err) => {

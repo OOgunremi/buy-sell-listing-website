@@ -38,10 +38,21 @@
         <!--column-->
         <div class="product-name-favorite-button">
           <!--row-->
-          <h1>
-            <%= product.name %>
-          </h1>
-          <button type="button" class="btn btn-success fav-button" action="/favorites/:id"
+          <div class="product-name-sold">
+            <h1>
+              <%= product.name %>
+            </h1>
+            <% if (product.sold) { %>
+              <h2 class="btn btn-danger sold-label">
+                Sold
+              </h2>
+              <% } else { %>
+                <h2 class="btn btn-success sold-label">
+                  Available
+                </h2>
+                <% } %>
+          </div>
+          <button type="button" class="btn btn-warning fav-button" action="/favorites/:id"
             method="POST">Favorite</button>
         </div>
         <img src=<%=product.image_url_one %> class="product-page-photo">
