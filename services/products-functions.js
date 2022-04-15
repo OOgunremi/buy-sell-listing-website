@@ -57,5 +57,6 @@ const getAdminProducts = async(db,req) => {
 
 module.exports = {
   getFilterProducts,
-  getAdminProducts
+  getAdminProducts,
+  getAppCookies
 };
