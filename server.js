@@ -74,6 +74,10 @@ app.get("/", async(req, res) => {
 
 app.get("/admin", async(req, res) => {
   const products = await productsFunctions.getAdminProducts(db, req);
+  if (!products) {
+    res.redirect('/');
+    return;
+  }
   res.render("admin_products", { products });
 });
 
@@ -87,7 +91,14 @@ app.get("/fav", async(req, res) => { //make sure any app.get("/urlname") I creat
   let query = `SELECT products.id, products.name, products.price, products.description, products.image_url_one FROM favourites JOIN products ON product_id = products.id WHERE user_id=$1`;
   // console.log('server side', query);
   // console.log('query values', req.query);
-  db.query(query, [productsFunctions.getAppCookies(req)['user_id']]) //productsFunctions.getAppCookies(req)['user_id'] of the user logged in
+  // const cookieValue = productsFunctions.getAppCookies(req)['user_id'];
+  const cookieValue = productsFunctions.getAppCookies(req);
+
+  if (!cookieValue) {
+    res.redirect('/');
+    return;
+  }
+  db.query(query, [cookieValue['user_id']]) //productsFunctions.getAppCookies(req)['user_id'] of the user logged in
     .then(data => {
       const favourites = data.rows;
       // console.log('data.rows', data)
