@@ -21,13 +21,20 @@
   <div class="btn-group user-menu">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
       aria-expanded="false">
-      Username
+      <% if(user){ %>
+        Welcome <%= user.first_name %>!
+          <% } else { %>
+            Login
+            <% } %>
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="/fav">Favorites</a>
-      <a class="dropdown-item" href="/messages">Messages</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Logout</a>
+      <% if(user.admin){ %>
+        <a class="dropdown-item" href="/admin">Admin</a>
+        <% } %>
+          <a class="dropdown-item" href="/fav">Favorites</a>
+          <a class="dropdown-item" href="/messages">Messages</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Logout</a>
     </div>
   </div>
   <!-- </form> -->

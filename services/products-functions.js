@@ -44,7 +44,6 @@ const getAppCookies = (req) => {
 };
 
 const getAdminProducts = async(db,req) => {
-  // const id = getAppCookies(req)['user_id'];
   const id = getAppCookies(req);
 
   if (!id) {
@@ -63,8 +62,28 @@ const getAdminProducts = async(db,req) => {
   return results.rows;
 };
 
+const getUserDetails = async(db,req) => {
+  const id = getAppCookies(req);
+
+  if (!id) {
+    return null;
+  }
+
+  let queryString = `
+  SELECT *
+  FROM users
+  WHERE id = $1;
+  `;
+
+  const results = await db.query(queryString, [id['user_id']]);
+
+  return results.rows[0];
+};
+
+
 module.exports = {
   getFilterProducts,
   getAdminProducts,
-  getAppCookies
+  getAppCookies,
+  getUserDetails
 };
