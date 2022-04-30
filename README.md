@@ -41,20 +41,21 @@ An app that lets buyers find the items they are looking for quickly, and easily 
 
 !["Home Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/home_page.png)
 
+## Home Page
 
 !["Home Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/home_page2.png)
 
+## Home Page
 
 !["Product Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/product_page.png)
 
+## Product Page
 
 !["Favourite Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/favourite_page.png)
 
+## Favourite Page
 
 !["Mesaging Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/Message_room.png)
 
+## Massaging Page
 
-!["Admin Page for Sellers"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/admin_page.png)
-
-
-### Screenshot of Booked Interviews
