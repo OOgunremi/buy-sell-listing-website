@@ -38,6 +38,7 @@ An app that lets buyers find the items they are looking for quickly, and easily 
 - git for version control
 
 ## App Screenshots
+## Home Page
 
 !["Home Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/home_page.png)
 
@@ -45,17 +46,16 @@ An app that lets buyers find the items they are looking for quickly, and easily 
 
 !["Home Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/home_page2.png)
 
-## Home Page
+## Product Page
 
 !["Product Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/product_page.png)
 
-## Product Page
+## Favourite Page
 
 !["Favourite Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/favourite_page.png)
 
-## Favourite Page
+## Massaging Page
 
 !["Mesaging Page"](https://github.com/OOgunremi/buy-sell-listing-website/blob/master/doc/Message_room.png)
 
-## Massaging Page
 
